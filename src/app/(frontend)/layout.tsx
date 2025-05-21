@@ -1,8 +1,11 @@
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { Header } from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
+import { VisualEditing } from "next-sanity";
+import { draftMode } from "next/headers";
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -12,6 +15,12 @@ export default function RootLayout({
       <Header />
       {children}
       <SanityLive />
+      {(await draftMode()).isEnabled && (
+        <>
+          <DisableDraftMode />
+          <VisualEditing />
+        </>
+      )}
     </section>
   );
 }
