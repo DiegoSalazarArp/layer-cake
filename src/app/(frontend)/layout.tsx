@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
 
 
@@ -7,13 +8,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-      >
-        {children}
-        <SanityLive />
-
-      </body>
-    </html>
+    <section className="bg-white min-h-screen">
+      <Header />
+      {children}
+      <SanityLive />
+    </section>
   );
 }
